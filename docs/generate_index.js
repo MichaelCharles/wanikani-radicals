@@ -35,6 +35,8 @@ const main = async () => {
     `
     contents = contents + `<h1>Wanikani Radicals Image Files</h1>`
     let files = fs.readdirSync('./original_svgs');
+    let wfiles = fs.readdirSync('./white_pngs');
+    let bfiles = fs.readdirSync('./black_pngs');
 
     contents = contents + `<div class="container">`
 
@@ -52,8 +54,8 @@ const main = async () => {
     contents = contents + `<div class="section">`
     contents = contents + `<h2>PNG Files (White)</h2><ul>
     `
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+    for (let i = 0; i < wfiles.length; i++) {
+        const file = wfiles[i];
         contents = contents + `<li><a href="https://mcaubrey.github.io/wanikani-radicals/white_pngs/${file}.png">${file}.png</a></li>
         `
     }
@@ -63,8 +65,8 @@ const main = async () => {
     contents = contents + `<div class="section">`
     contents = contents + `<h2>PNG Files (Black)</h2><ul>
     `
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+    for (let i = 0; i < bfiles.length; i++) {
+        const file = bfiles[i];
         contents = contents + `<li><a href="https://mcaubrey.github.io/wanikani-radicals/black_pngs/${file}.png">${file}.png</a></li>
         `
     }
