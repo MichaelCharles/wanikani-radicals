@@ -6,12 +6,39 @@ const main = async () => {
     <head>
     <title>Wanikani Radicals Image Files</title>
     </head>
+    <style>
+    html, body {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        background: #f2f2f2;
+        color: #212121;
+        box-sizing: border-box;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+    div, ul, li, a, img {
+        box-sizing: border-box;
+    }
+    .wrapper {
+        margin: 1em;
+    }
+    .container {
+        display: flex;
+    }
+    .section {
+        flex: 1;
+    }
+    </style>
     <body>
+    <div class="wrapper">
     `
-    contents = contents + `<h2>Wanikani Radicals Image Files</h2><ul>
-    `
+    contents = contents + `<h1>Wanikani Radicals Image Files</h1>`
     let files = fs.readdirSync('./original_svgs');
-    
+
+    contents = contents + `<div class="container">`
+
+    contents = contents + `<div class="section">`
     contents = contents + `<h2>SVG Files</h2><ul>
     `
     for (let i = 0; i < files.length; i++) {
@@ -20,7 +47,9 @@ const main = async () => {
         `
     }
     contents = contents + `</ul>`
+    contents = contents + `</div>`
 
+    contents = contents + `<div class="section">`
     contents = contents + `<h2>PNG Files (White)</h2><ul>
     `
     for (let i = 0; i < files.length; i++) {
@@ -29,9 +58,22 @@ const main = async () => {
         `
     }
     contents = contents + `</ul>`
+    contents = contents + `</div>`
 
+    contents = contents + `<div class="section">`
+    contents = contents + `<h2>PNG Files (Black)</h2><ul>
+    `
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        contents = contents + `<li><a href="https://mcaubrey.github.io/wanikani-radicals/black_pngs/${file}.png">${file}.png</a></li>
+        `
+    }
+    contents = contents + `</ul>`
+    contents = contents + `</div>`
 
+    contents = contents + `</div>`
     contents = contents + `
+    </div>
     </body>
     </html>
     `
